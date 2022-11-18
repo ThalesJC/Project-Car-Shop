@@ -20,4 +20,19 @@ export default class CarController {
     const newCar = await this.service.carRegistration(car);
     return this.res.status(201).json(newCar);
   }
+
+  public async findAll() {
+    const result = await this.service.findAll();
+    return this.res.status(200).json(result);
+  }
+
+  public async findById() {
+    try {
+      const { id } = this.req.params;
+      const result = await this.service.findById(id);
+      return this.res.status(200).json(result);
+    } catch (error) {
+      this.next(error);
+    }
+  }
 }

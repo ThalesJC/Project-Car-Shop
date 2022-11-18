@@ -24,7 +24,11 @@ export default class CarODM {
     return this.model.create({ ...car });
   }
 
-  public async getAll() {
+  public async findAll() {
     return this.model.find({});
+  }
+
+  public async findById(id: string) {
+    return this.model.findById(id);
   }
 }
