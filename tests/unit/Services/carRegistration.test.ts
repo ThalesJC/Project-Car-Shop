@@ -3,6 +3,7 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import ICar from '../../../src/Interfaces/ICar';
 import Car from '../../../src/Domains/Car';
+import CarService from '../../../src/Services/CarService';
 
 describe('Crie a rota onde seja possível cadastrar um novo carro', function () {
   it('Deve ser possível cadastrar um novo carro com SUCESSO', async function () {
@@ -29,7 +30,7 @@ describe('Crie a rota onde seja possível cadastrar um novo carro', function () 
     sinon.stub(Model, 'create').resolves(newCarOutput);
 
     // act
-    const service = new carService();
+    const service = new CarService();
     const result = await service.carRegistration(newCarInput);
 
     // assert
