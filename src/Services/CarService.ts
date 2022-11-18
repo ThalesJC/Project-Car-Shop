@@ -28,4 +28,11 @@ export default class CarService {
     if (!result) throw new NotFoundError('Car not found');
     return new Car(result);
   }
+
+  public async update(id: string, car: ICar) {
+    if (!isValidObjectId(id)) throw new UnprocessableError('Invalid mongo id');
+    const result = await this.carODM.update(id, car);
+    if (!result) throw new NotFoundError('Car not found');
+    return new Car(result);
+  }
 }
