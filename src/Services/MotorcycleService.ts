@@ -25,14 +25,14 @@ export default class MotorcycleService {
   public async findMotorcycleById(id: string) {
     if (!isValidObjectId(id)) throw new UnprocessableError('Invalid mongo id');
     const result = await this.motorcycleODM.findById(id);
-    if (!result) throw new NotFoundError('Car not found');
+    if (!result) throw new NotFoundError('Motorcycle not found');
     return new Motorcycle(result);
   }
 
   public async updateMotorcycle(id: string, car: IMotorcycle) {
     if (!isValidObjectId(id)) throw new UnprocessableError('Invalid mongo id');
     const result = await this.motorcycleODM.update(id, car);
-    if (!result) throw new NotFoundError('Car not found');
+    if (!result) throw new NotFoundError('Motorcycle not found');
     return new Motorcycle(result);
   }
 }
