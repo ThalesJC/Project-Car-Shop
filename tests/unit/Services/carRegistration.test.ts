@@ -5,8 +5,8 @@ import ICar from '../../../src/Interfaces/ICar';
 import Car from '../../../src/Domains/Car';
 import CarService from '../../../src/Services/CarService';
 
-describe('Crie a rota onde seja possível cadastrar um novo carro', function () {
-  it('Deve ser possível cadastrar um novo carro com SUCESSO', async function () {
+describe('Crie a rota onde seja possível cadastrar um novo carro!', function () {
+  it('Deve ser possível cadastrar um novo carro com SUCESSO!', async function () {
     // arrange
     const newCarInput: ICar = {
       model: 'Marea',
@@ -28,7 +28,6 @@ describe('Crie a rota onde seja possível cadastrar um novo carro', function () 
       seatsQty: 5,
     });
     sinon.stub(Model, 'create').resolves(newCarOutput);
-
     // act
     const service = new CarService();
     const result = await service.carRegistration(newCarInput);

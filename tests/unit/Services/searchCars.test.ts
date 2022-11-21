@@ -1,10 +1,9 @@
 import { expect } from 'chai';
 import { Model } from 'mongoose';
 import Sinon from 'sinon';
-// import app from '../../../src/app';
 import CarService from '../../../src/Services/CarService';
 
-describe('Crie um endpoint para listar is carros', function () {
+describe('Crie um endpoint para listar os carros', function () {
   afterEach(function () { Sinon.restore(); });
   it('Não será possível listar um carro que nao exista!', async function () {
     // arrange
@@ -34,7 +33,7 @@ describe('Crie um endpoint para listar is carros', function () {
   });
   it('deve ser possível listar todos os carros através da rota "/cars"!', async function () {
     // arrange
-    const allCars = [
+    const output = [
       {
         id: '634852326b35b59438fbea2f',
         model: 'Marea',
@@ -56,16 +55,16 @@ describe('Crie um endpoint para listar is carros', function () {
         seatsQty: 5,
       },
     ];
-    Sinon.stub(Model, 'find').resolves(allCars);
+    Sinon.stub(Model, 'find').resolves(output);
     // act
     const service = new CarService();
     const result = await service.findAllCars();
     // assert
-    expect(result).to.be.deep.equal(allCars);
+    expect(result).to.be.deep.equal(output);
   });
-  it('deve ser possível listar um carro específico através da rota "/cars/id"!', async function () {
+  it('Deve ser possível listar um carro específico através da rota "/cars/id"!', async function () {
     // arrange
-    const theCar = {
+    const output = {
       id: '634852326b35b59438fbea31',
       model: 'Tempra',
       year: 1995,
@@ -75,11 +74,12 @@ describe('Crie um endpoint para listar is carros', function () {
       doorsQty: 2,
       seatsQty: 5,
     };
-    Sinon.stub(Model, 'findById').resolves(theCar);
+    const id = '634852326b35b59438fbea31';
+    Sinon.stub(Model, 'findById').resolves(output);
     // act
     const service = new CarService();
-    const result = await service.findCarById('634852326b35b59438fbea31');
+    const result = await service.findCarById(id);
     // assert
-    expect(result).to.be.deep.equal(theCar);
+    expect(result).to.be.deep.equal(output);
   });
 });
