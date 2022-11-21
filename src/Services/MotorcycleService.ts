@@ -35,4 +35,11 @@ export default class MotorcycleService {
     if (!result) throw new NotFoundError('Motorcycle not found');
     return new Motorcycle(result);
   }
+
+  // public async deleteMotorcycle(id: string) {
+  //   if (!isValidObjectId(id)) throw new UnprocessableError('Invalid mongo id');
+  //   const result = await this.motorcycleODM.delete(id);
+  //   if (!result) throw new NotFoundError('Motorcycle not found');
+  //   return new Motorcycle(result);
+  // }
 }

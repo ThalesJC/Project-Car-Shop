@@ -35,4 +35,11 @@ export default class CarService {
     if (!result) throw new NotFoundError('Car not found');
     return new Car(result);
   }
+
+  // public async deleteCar(id: string) {
+  //   if (!isValidObjectId(id)) throw new UnprocessableError('Invalid mongo id');
+  //   const result = await this.carODM.delete(id);
+  //   if (!result) throw new NotFoundError('Car not found');
+  //   return new Car(result);
+  // }
 }
