@@ -9,5 +9,9 @@ route.get(
   '/motorcycles/:id',
   (req, res, next) => new MotorcycleController(req, res, next).findById(),
 );
+route.put(
+  '/motorcycles/:id',
+  (req, res, next) => new MotorcycleController(req, res, next).update(),
+);
 
 export default route;
