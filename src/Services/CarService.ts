@@ -7,9 +7,13 @@ import CarODM from '../Models/CarODM';
 
 export default class CarService {
   carODM: CarODM;
+  notFoundMessage: string;
+  mongoIdMessage: string;
 
   constructor() {
     this.carODM = new CarODM();
+    this.notFoundMessage = 'Car not found';
+    this.mongoIdMessage = 'Invalid mongo id';
   }
 
   public async carRegistration(car: ICar) {
@@ -23,23 +27,23 @@ export default class CarService {
   }
 
   public async findCarById(id: string) {
-    if (!isValidObjectId(id)) throw new UnprocessableError('Invalid mongo id');
+    if (!isValidObjectId(id)) throw new UnprocessableError(this.mongoIdMessage);
     const result = await this.carODM.findById(id);
-    if (!result) throw new NotFoundError('Car not found');
+    if (!result) throw new NotFoundError(this.notFoundMessage);
     return new Car(result);
   }
 
   public async updateCar(id: string, car: ICar) {
-    if (!isValidObjectId(id)) throw new UnprocessableError('Invalid mongo id');
+    if (!isValidObjectId(id)) throw new UnprocessableError(this.mongoIdMessage);
     const result = await this.carODM.update(id, car);
-    if (!result) throw new NotFoundError('Car not found');
+    if (!result) throw new NotFoundError(this.notFoundMessage);
     return new Car(result);
   }
 
-  // public async deleteCar(id: string) {
-  //   if (!isValidObjectId(id)) throw new UnprocessableError('Invalid mongo id');
-  //   const result = await this.carODM.delete(id);
-  //   if (!result) throw new NotFoundError('Car not found');
-  //   return new Car(result);
-  // }
+  public async deleteCar(id: string) {
+    if (!isValidObjectId(id)) throw new UnprocessableError(this.mongoIdMessage);
+    const result = await this.carODM.delete(id);
+    if (!result) throw new NotFoundError(this.notFoundMessage);
+    return new Car(result);
+  }
 }
