@@ -38,7 +38,7 @@ Instalando no MacOS: https://docs.docker.com/desktop/install/mac-install/; <br>
   
   E por fim rode o comando:
   ```
-  npm start
+  npm run dev
   ```
   
   Para iniciar a aplicação!
