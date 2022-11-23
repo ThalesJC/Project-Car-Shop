@@ -3,7 +3,6 @@
 <ul>
   <li>Typescript;</li>
   <li>Express;</li>
-  <li>Mocha;</li>
   <li>Chai;</li>
   <li>Mongoose;</li>
   <li>Dotenv;</li>
